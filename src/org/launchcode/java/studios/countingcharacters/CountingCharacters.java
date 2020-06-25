@@ -1,10 +1,10 @@
 package org.launchcode.java.studios.countingcharacters;
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class CountingCharacters {
-    public static void main(String[] arg){
+    public static void main(String[] args){
         String quote = "If the product of two terms is zero " +
                 "then common sense says at least one of the two terms has to be zero " +
                 "to start with. So if you move all the terms over to one side, " +
@@ -43,13 +43,48 @@ public class CountingCharacters {
 
         for (int i=0; i<characterArray.length;i++){
             if (characterCounter.containsKey(i)){
-                //characterCounter.value += 1;
+                characterCounter.values(i) += 1;
             }
 
+        }
+        for (Character letter : characterCounter){
+            System.out.println(letter);
         }
 
         //loop through chars
         //store number of char instances for each char -- Hashmap
         //print results- also a loop
+    }
+}
+ */
+
+//import java.io.File;
+//import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class CountingCharacters {
+    public static void main(String[] args) {
+        String quote = "If the product of two terms is zero " +
+                "then common sense says at least one of the two terms has to be zero " +
+                "to start with. So if you move all the terms over to one side, " +
+                "you can put the quadratics into a form that can be factored " +
+                "allowing that side of the equation to equal zero. Once you’ve done that, " +
+                "it’s pretty straightforward from there.";
+        String lowerCaseQuote = quote.toLowerCase();
+        char[] characterArray = lowerCaseQuote.toCharArray();
+        HashMap<Character, Integer> occurrences = new HashMap();
+
+        for (char character:lowerCaseQuote.toLowerCase().toCharArray()) {
+            if (Character.isLetter(character)) {
+                if (occurrences.get(character) != null) {
+                    occurrences.put(character, occurrences.get(character) + 1);
+                } else {
+                    occurrences.put(character, 1);
+                }
+            }
+        }
+        System.out.println(occurrences.toString());
+
     }
 }
