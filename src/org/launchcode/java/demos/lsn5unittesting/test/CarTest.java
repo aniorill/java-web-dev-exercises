@@ -11,44 +11,48 @@ public class CarTest {
     Car test_car;
 
     @Before
-    public void createCarObject(){
+    public void createCarObject() {
         test_car = new Car("Toyota", "Prius", 10, 50);
     }
 
     //TODO: add emptyTest so we can configure our runtime environment (remove this test before pushing to your personal GitLab account)
     @Test
-    public void emptyTest(){
-        assertEquals(10,10,.001);
+    public void emptyTest() {
+        assertEquals(10, 10, .001);
     }
+
     //TODO: constructor sets gasTankLevel properly
     @Test
-    public void testInitialGasTank(){
+    public void testInitialGasTank() {
         //Car test_car = new Car ("Toyota", "Prius", 10, 50);
-        assertEquals(10, test_car.getGasTankLevel(),.001);
+        assertEquals(10, test_car.getGasTankLevel(), .001);
     }
+
     //TODO: gasTankLevel is accurate after driving within tank range
     @Test
-    public void testGasTankAfterDriving(){
+    public void testGasTankAfterDriving() {
         test_car.drive(50);
         assertEquals(9, test_car.getGasTankLevel(), .001);
     }
     //TODO: gasTankLevel is accurate after attempting to drive past tank range
-    //public string gasLevelAfterDrive (int miles, int tankLevel){
-   // boolean result = false;
-                //if(test_car.drive(100) >= test_car.setGasTankLevel(10)) {
-                   // result = true;
-               // }
-
-  @Test
-    public void testGasTankAfterExceedingTankRange(){
-        test_car.drive(100);
-        test_car.setMilesPerGallon(4);
-        test_car.setGasTankLevel(10);
 
 
-        }
-       // assertTrue( gasLevelAfterDrive(100,10),true);
+    @Test
+    public void testGasTankAfterExceedingTankRange() {
+        test_car.drive(500);
+        //test_car.setMilesPerGallon(4);
+        //test_car.setGasTankLevel(5);
+        assertEquals(0, test_car.getGasTankLevel(), .001);
+
     }
+
     //TODO: can't have more gas than tank size, expect an exception
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testGasOverfillException(){
+        test_car.addGas(5);
+        fail("Shouldn't get here, car cannot have more gas in tank than the size of the tank");
+    }
+
 //}
+}
