@@ -1,7 +1,7 @@
 package exercises.technology;
 import java.util.Scanner;
 
-public class Computer {
+public class Computer extends AbstractEntity {
     private int storage;
     private boolean internetAccess;
     private int batteryLevel;
@@ -9,6 +9,7 @@ public class Computer {
 
 
     public Computer (int storage, boolean internetAccess, int batteryLevel){
+        super();
         this.storage = storage;
         this.internetAccess = internetAccess;
         this.batteryLevel = batteryLevel;
